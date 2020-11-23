@@ -26,5 +26,5 @@ class Color_detector:
         color_det = True
 
     # return TRUE or FALSE
-    return color_det
+    return color_det, area
     
