@@ -16,17 +16,17 @@ bomb_detect = Bomb_detector(np.array([136, 87, 111]),
 # Capturing video through webcam 
 webcam = cv2.VideoCapture(0) 
 
-while(1):
+while True:
   # read a image
   _, image = webcam.read()
-  cv2.imshow("raw", image)
-
   bmb = bomb_detect.color_det(image)
 
+  cv2.imshow("raw", image)
   cv2.imshow("bomb", bmb)
 
-  key = cv2.waitKey(0)    
-  if key == 27:
+  if cv2.waitKey(10) & 0xFF == ord('q'): 
+    cap.release() 
+    cv2.destroyAllWindows() 
     break
 
   # cv2.destroyAllWindows()
