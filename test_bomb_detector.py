@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 from classes.bomb_detector import Bomb_detector
 import cv2
 import numpy as np

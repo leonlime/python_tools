@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 from classes.bomb_detector import Bomb_detector
 import cv2
 import numpy as np
@@ -18,10 +19,16 @@ webcam = cv2.VideoCapture(0)
 while(1):
   # read a image
   _, image = webcam.read()
+  cv2.imshow("raw", image)
 
   bmb = bomb_detect.color_det(image)
 
   cv2.imshow("bomb", bmb)
 
-  cv2.waitKey(0)    
-  cv2.destroyAllWindows()
+  key = cv2.waitKey(0)    
+  if key == 27:
+    break
+
+  # cv2.destroyAllWindows()
+
+  
