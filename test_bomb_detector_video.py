@@ -12,13 +12,16 @@ bomb_detect = Bomb_detector(np.array([136, 87, 111]),
                             np.array([20, 100, 100]), 
                             np.array([32, 255, 255]))
 
-# read a image
-image = cv2.imread('images/bomba2.jpeg')
+# Capturing video through webcam 
+webcam = cv2.VideoCapture(0) 
 
-bmb = bomb_detect.color_det(image)
+while(1):
+  # read a image
+  _, image = webcam.read()
 
-cv2.imshow("bomb", bmb)
+  bmb = bomb_detect.color_det(image)
 
-cv2.waitKey(0)    
-cv2.destroyAllWindows()
+  cv2.imshow("bomb", bmb)
 
+  cv2.waitKey(0)    
+  cv2.destroyAllWindows()
