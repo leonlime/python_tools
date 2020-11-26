@@ -15,7 +15,7 @@ class Bomb_detector:
 
     detections = self.classifier.detectMultiScale(imagemcinza, scaleFactor=1.1,
                                            minNeighbors = self.neig,
-                                           minSize=(10,10),
+                                           minSize=(1,1),
                                            maxSize=(3000,3000))
 
     for (x, y, l, a) in detections:

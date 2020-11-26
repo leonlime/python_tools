@@ -3,32 +3,35 @@ from classes.bomb_detector import Bomb_detector
 import cv2
 import numpy as np
 
-# create color detectors
-bomb_detect = Bomb_detector(np.array([136, 87, 111]), 
-                            np.array([180, 255, 255]),
-                            np.array([25, 52, 72]), 
-                            np.array([102, 255, 255]),                      
-                            np.array([94, 80, 2]), 
-                            np.array([120, 255, 255]),                      
-                            np.array([20, 100, 100]), 
-                            np.array([32, 255, 255]))
+classificador1 = cv2.CascadeClassifier('cascade1.xml')
+classificador2 = cv2.CascadeClassifier('cascade2.xml')
+classificador3 = cv2.CascadeClassifier('cascade3.xml')
 
 # Capturing video through webcam 
 webcam = cv2.VideoCapture(0) 
 
 while True:
   # read a image
-  _, image = webcam.read()
-  bmb = bomb_detect.color_det(image)
+  _, image1 = webcam.read()
+  _, image2 = webcam.read()
+  _, image3 = webcam.read()
 
-  cv2.imshow("raw", image)
-  cv2.imshow("bomb", bmb)
+  bomb_detect1 = Bomb_detector(classificador1, 50)
+  bmb1, ident1 = bomb_detect1.bomb_det(image1)
 
+  bomb_detect2 = Bomb_detector(classificador2, 50)
+  bmb2, ident2 = bomb_detect2.bomb_det(image2)
+
+  bomb_detect3 = Bomb_detector(classificador3, 50)
+  bmb1, ident3 = bomb_detect3.bomb_det(image3)
+
+  cv2.imshow("raw1", image1)
+  cv2.imshow("raw2", image2)
+  cv2.imshow("raw3", image2)
+  
   if cv2.waitKey(10) & 0xFF == ord('q'): 
     cap.release() 
     cv2.destroyAllWindows() 
     break
 
   # cv2.destroyAllWindows()
-
-  
