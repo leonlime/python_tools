@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 image = cv2.imread('images/bomba8.jpeg')
-classificador1 = cv2.CascadeClassifier('cascade2.xml')
+classificador1 = cv2.CascadeClassifier('cascade4.xml')
 
 # create bomb detectors
 bomb_detect = Bomb_detector(classificador1, 70)

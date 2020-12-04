@@ -2,13 +2,13 @@
 import cv2
 import numpy as np
 
-imagem1 = cv2.imread('bomba8.jpeg')
-imagem2 = cv2.imread('bomba8.jpeg')
-imagem3 = cv2.imread('bomba8.jpeg')
+imagem1 = cv2.imread('bomba3.jpeg')
+imagem2 = cv2.imread('bomba3.jpeg')
+imagem3 = cv2.imread('bomba3.jpeg')
 
-classificador1 = cv2.CascadeClassifier('cascade1.xml')
-classificador2 = cv2.CascadeClassifier('cascade2.xml')
-classificador3 = cv2.CascadeClassifier('cascade3.xml')
+classificador1 = cv2.CascadeClassifier('cascade2.xml')
+classificador2 = cv2.CascadeClassifier('cascade4.xml')
+classificador3 = cv2.CascadeClassifier('cascade5.xml')
 
 imagemcinza = cv2.cvtColor(imagem1, cv2.COLOR_BGR2GRAY)
 
@@ -17,17 +17,17 @@ imagemcinza = cv2.cvtColor(imagem1, cv2.COLOR_BGR2GRAY)
 # deteccoes3 = classificador3.detectMultiScale(imagemcinza)
 
 deteccoes1 = classificador1.detectMultiScale(imagemcinza, scaleFactor=1.1,
-                                           minNeighbors=30,
+                                           minNeighbors=100,
                                            minSize=(10,10),
                                            maxSize=(3000,3000))
 
 deteccoes2 = classificador2.detectMultiScale(imagemcinza, scaleFactor=1.1,
-                                           minNeighbors=30,
+                                           minNeighbors=100,
                                            minSize=(10,10),
                                            maxSize=(3000,3000))
 
 deteccoes3 = classificador3.detectMultiScale(imagemcinza, scaleFactor=1.1,
-                                           minNeighbors=30,
+                                           minNeighbors=100,
                                            minSize=(10,10),
                                            maxSize=(3000,3000))
 
